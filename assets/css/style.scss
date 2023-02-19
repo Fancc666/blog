@@ -14,3 +14,11 @@ $tab-count: {{ site.tabs | size | plus: 1 }}; // plus 1 for home tab
     word-break: keep-all;
 }
 
+@media (max-width: 576px){
+    .post-content>div[class^=language-] {
+        margin-left: -0.25rem;
+        margin-right: -0.25rem;
+        border-radius: 0;
+    }
+}
+
