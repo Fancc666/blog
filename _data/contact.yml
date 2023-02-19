@@ -7,6 +7,10 @@
 #   type: twitter
 #   icon: 'fab fa-twitter'
 -
+  type: Weibo
+  icon: 'fab fa-weibo'
+  url:  'https://weibo.com/u/7549411797'
+-
   type: email
   icon: 'fas fa-envelope'
   noblank: true            # open link in current tab
