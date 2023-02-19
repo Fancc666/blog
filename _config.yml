@@ -93,7 +93,7 @@ comments:
     shortname:    # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
   # utterances settings › https://utteranc.es/
   utterances:
-    repo: fancc666/fancc666.github.io         # <gh-username>/<repo>
+    repo: fancc666/blog         # <gh-username>/<repo>
     issue_term: title   # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
@@ -169,6 +169,7 @@ defaults:
 
 sass:
   style: compressed
+  load_paths: - css
 
 compress_html:
   clippings: all
