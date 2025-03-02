@@ -16,6 +16,9 @@ Gemfile.lock
 # rubygem
 *.gem
 
+# starter
+*.command
+
 # npm dependencies
 node_modules
 package-lock.json
