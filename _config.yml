@@ -21,10 +21,10 @@ timezone: Asia/Shanghai
 
 title: FANCC的博客                          # the main title
 
-tagline: 一个绝佳的测试地点   # it will display as the sub-title
+tagline: 分享我的每一次进步   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  一个有乐趣的共同成长的博客页面
+  在学习与生活中共同成长
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: ''
