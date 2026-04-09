@@ -26,3 +26,9 @@ gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 if RUBY_PLATFORM =~ /linux-musl/
   gem "jekyll-sass-converter", "~> 2.0"
 end
+
+group :jekyll_plugins do
+  gem "jekyll-feed"  # 确保这一行存在
+end
+
+gem "logger"

@@ -21,7 +21,7 @@ timezone: Asia/Shanghai
 
 title: FANCC的博客                          # the main title
 
-tagline: 分享我的每一次进步   # it will display as the sub-title
+tagline: 无限进步   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   在学习与生活中共同成长
@@ -198,3 +198,6 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
+
+plugins:
+  - jekyll-feed
