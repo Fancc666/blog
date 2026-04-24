@@ -5,30 +5,30 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  
+
     {% if page.layout == 'home' or page.layout == 'post' %}
-  
+
       {% if site.google_analytics.pv.proxy_endpoint %}
         <meta name="pv-proxy-endpoint" content="{{ site.google_analytics.pv.proxy_endpoint }}">
       {% endif %}
-  
+
       {% if site.google_analytics.pv.cache_path %}
         <meta name="pv-cache-path" content="{{ site.google_analytics.pv.cache_path | relative_url }}">
       {% endif %}
-  
+
     {% endif %}
-  
+
     {% capture seo_tags %}
       {% seo title=false %}
     {% endcapture %}
-  
+
     {% if page.image %}
       {% assign img = page.image.path | default: page.image %}
-  
+
       {% unless img contains '://' %}
         {% assign img_path = page.img_path | append: '/' | append: img | replace: '//', '/' %}
         {% capture target %}"{{ img | absolute_url }}"{% endcapture %}
-  
+
         {% if site.img_cdn contains '//' %}
           <!-- it's a cross-origin URL -->
           {% capture replacement %}"{{ site.img_cdn }}{{ img_path }}"{% endcapture %}
@@ -38,48 +38,58 @@
             "{{ site.img_cdn | append: '/' | append: img_path | replace: '//', '/' | absolute_url }}"
           {%- endcapture -%}
         {% endif %}
-  
+
         {% assign seo_tags = seo_tags | replace: target, replacement %}
-  
+
       {% endunless %}
-  
+
     {% endif %}
-  
+
     {{ seo_tags }}
-  
+
     <title>
     {%- unless page.layout == "home" -%}
       {{ page.title | append: " | "}}
     {%- endunless -%}
       {{ site.title }}
     </title>
-  
+
     {% include favicons.html %}
-  
+
     {% if site.resources.ignore_env != jekyll.environment and site.resources.self_hosted %}
-  
+
       <link href="{{ site.data.assets[origin].webfonts | relative_url }}" rel="stylesheet">
-  
+
     {% else %}
-  
-      {% for cdn in site.data.assets[origin].cdns %}
+
+      <!-- {% for cdn in site.data.assets[origin].cdns %}
         <link rel="preconnect" href="{{ cdn.url }}" {{ cdn.args }}>
         <link rel="dns-prefetch" href="{{ cdn.url }}" {{ cdn.args }}>
       {% endfor %}
-  
-      <link rel="stylesheet" href="{{ site.data.assets[origin].webfonts | relative_url }}">
-  
+
+      <link rel="stylesheet" href="{{ site.data.assets[origin].webfonts | relative_url }}"> -->
+      <!-- 用国内字体CDN -->
+      <link rel="preconnect" href="https://fonts.loli.net" crossorigin>
+      <link rel="dns-prefetch" href="https://fonts.loli.net">
+      <link rel="preconnect" href="https://gstatic.loli.net" crossorigin>
+      <link rel="dns-prefetch" href="https://gstatic.loli.net">
+
+      {% assign webfonts_url = site.data.assets[origin].webfonts %}
+      {% assign webfonts_url = webfonts_url | replace: 'fonts.googleapis.com', 'fonts.loli.net' %}
+      {% assign webfonts_url = webfonts_url | replace: 'fonts.gstatic.com', 'gstatic.loli.net' %}
+      <link rel="stylesheet" href="{{ webfonts_url | relative_url }}">
+
     {% endif %}
-  
+
     <!-- GA -->
     {% if jekyll.environment == 'production'
         and site.google_analytics.id != empty and site.google_analytics.id %}
       <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials">
       <link rel="dns-prefetch" href="https://www.google-analytics.com">
-  
+
       <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous">
       <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-  
+
       {% if site.google_analytics.pv.proxy_endpoint %}
         {% assign proxy_url = site.google_analytics.pv.proxy_endpoint
             | replace: "https://", "" | split: "/" | first | prepend: "https://" %}
@@ -87,28 +97,28 @@
         <link rel="dns-prefetch" href="{{ proxy_url }}">
       {% endif %}
     {% endif %}
-  
+
     <!-- Bootstrap -->
     <link rel="stylesheet" href="{{ site.data.assets[origin].bootstrap.css | relative_url}}">
-  
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ site.data.assets[origin].fontawesome.css | relative_url }}">
-  
+
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-  
+
     {% if site.toc and page.toc %}
       <link rel="stylesheet" href="{{ site.data.assets[origin].bootstrap-toc.css | relative_url }}">
     {% endif %}
-  
+
     {% if page.layout == 'page' or page.layout == 'post' %}
       <!-- Manific Popup -->
       <link rel="stylesheet" href="{{ site.data.assets[origin].magnific-popup.css | relative_url }}">
     {% endif %}
-  
+
     <!-- JavaScript -->
-  
+
     <script src="{{ site.data.assets[origin].jquery.js | relative_url }}"></script>
-  
+
     {% unless site.theme_mode %}
       {% include mode-toggle.html %}
     {% endunless %}
@@ -119,7 +129,7 @@
         (function() {
           var hm = document.createElement("script");
           hm.src = "https://hm.baidu.com/hm.js?7b72e781ab749f382d60d9e36ee3b994";
-          var s = document.getElementsByTagName("script")[0]; 
+          var s = document.getElementsByTagName("script")[0];
           s.parentNode.insertBefore(hm, s);
         })();
     </script>
