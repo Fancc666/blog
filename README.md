@@ -2,7 +2,7 @@
 
 ## 在线地址
 
-<https://g.565455.xyz/blog/>
+<https://blog.565455.xyz/>
 
 ## Using Chirpy
 
