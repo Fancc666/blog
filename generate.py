@@ -1,5 +1,6 @@
 from datetime import datetime
 import os
+import readline
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
